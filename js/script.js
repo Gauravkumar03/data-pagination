@@ -1,5 +1,17 @@
 const studentsPerPage = 9
 
+// Code to insert search bar using javascript
+
+const header = document.querySelector('.header')
+const searchTemplate = `
+<label for="search" class="student-search">
+<span>Search by name</span>
+<input id="search" placeholder="Search by name...">
+<button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+</label>
+`
+header.insertAdjacentHTML('beforeend', searchTemplate)
+
 function showPage(list, page) {
    // create two variables that will represent the index for the first and last student on the page
    const startIndex = page * studentsPerPage - studentsPerPage
@@ -40,6 +52,7 @@ function showPage(list, page) {
 function addPagination(list) {
    // create a variable to calculate the number of pages needed
    const numOfPages = Math.ceil(list.length / studentsPerPage)
+   const paginationList = document.querySelector('.pagination')
  
    // select the element with a class of `link-list` and assign it to a variable
    const linkList = document.querySelector('.link-list')
@@ -60,7 +73,8 @@ function addPagination(list) {
    }
  
    // give the first pagination button a class of "active"
-   document.querySelector('button').classList.add('active')
+   paginationList.querySelector('button').classList.add('active')
+   
  
    // create an event listener on the `link-list` element
      // if the click target is a button:
@@ -99,3 +113,4 @@ searchButton.addEventListener('keyup', (e) => {
       document.querySelector('.link-list').innerHTML = ''
    }
 })
+
