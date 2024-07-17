@@ -87,16 +87,13 @@ searchButton.addEventListener('keyup', (e) => {
    for(let i = 0; i < data.length; i++) {
       const name = `${data[i].name.first} ${data[i].name.last}`
       const bool = name.toLowerCase().includes(e.target.value.toLowerCase())
-      console.log(name.toLowerCase(), e.target.value.toLowerCase(), bool)
       if(bool) {
          filteredArray.push(data[i])
       }
    }
    if(filteredArray.length > 0) {
-      console.log(filteredArray)
       addPagination(filteredArray)
       showPage(filteredArray, 1)
-      console.log('bye')
    } else {
       document.querySelector('.student-list').innerHTML = `<h3>No results were found</h3>`
       document.querySelector('.link-list').innerHTML = ''
